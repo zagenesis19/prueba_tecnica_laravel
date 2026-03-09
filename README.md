@@ -67,3 +67,10 @@ Si se dispusiera de más tiempo para la evolución del proyecto, se implementar�
 4.  **Tests Automatizados**: Crear pruebas unitarias y de integración (Feature Tests) para asegurar que el cálculo del total y la lógica de la tabla pivote funcionen correctamente.
 5.  **Autenticación**: Implementar Laravel Sanctum o JWT para proteger los endpoints de creación de productos y pedidos.
 6.  **Optimización de Consultas (Eager Loading)**: Aunque ya se usa en algunos puntos, se podría optimizar aún más para evitar el problema de consultas N+1 en listados complejos.
+
+### ⚠️ Nota sobre datos de prueba para Pedidos
+Para probar el endpoint de creación de pedidos (`POST /api/orders`), el sistema valida estrictamente que el `user_id` exista en la base de datos. Como la prueba no requería un endpoint de registro de usuarios ni seeders, puedes generar un usuario de prueba rápidamente ejecutando en tu terminal:
+
+```bash
+php artisan tinker
+\App\Models\User::factory()->create();
